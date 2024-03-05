@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "title": "Snow White and the Seven Dwarfs",
+    "releaseYear": "1937",
+    "category": "classic-disney"
+  },
+  {
+    "id": "2",
+    "title": "The Lion King",
+    "releaseYear": "1994",
+    "category": "classic-disney"
+  },
+  {
+    "id": "3",
+    "title": "Avengers: Endgame",
+    "releaseYear": "2019",
+    "category": "marvel"
+  },
+  {
+    "id": "4",
+    "title": "WandaVision",
+    "releaseYear": "2021",
+    "category": "marvel"
+  },
+  {
+    "id": "5",
+    "title": "The Mandalorian",
+    "releaseYear": "2019",
+    "category": "star-wars"
+  },
+  {
+    "id": "6",
+    "title": "Star Wars: The Rise of Skywalker",
+    "releaseYear": "2019",
+    "category": "star-wars"
+  },
+  {
+    "id": "7",
+    "title": "Monsters at Work",
+    "releaseYear": "2021",
+    "category": "disney-plus-originals"
+  },
+  {
+    "id": "8",
+    "title": "Loki",
+    "releaseYear": "2021",
+    "category": "disney-plus-originals"
+  },
+  {
+    "id": "9",
+    "title": "The World According to Jeff Goldblum",
+    "releaseYear": "2019",
+    "slug": "documentaries"
+  },
+  {
+    "id": "10",
+    "title": "Secrets of the Whales",
+    "releaseYear": "2021",
+    "slug": "documentaries"
+  }
+]
