@@ -2,7 +2,7 @@ import { PageContainer } from "@/components/layout"
 import { Card, CategoryCard } from "@/components";
 import { content, categories } from "@/mocks"
 
-export function HomePage () {
+export function Home () {
   return (
     <PageContainer>
       <div className="p-4 md:px-28 lg:px-44">

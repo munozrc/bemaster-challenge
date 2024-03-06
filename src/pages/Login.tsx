@@ -10,7 +10,7 @@ interface Inputs {
   password: string
 }
 
-export function LoginPage (): JSX.Element {
+export function Login (): JSX.Element {
   const { 
     register, 
     handleSubmit, 
