@@ -1,34 +1,35 @@
-import { Link } from "react-router-dom";
-import { PageContainer } from "@/components/layout";
-import categories from "@/__mocks__/categories.json"
-import content from "@/__mocks__/content.json"
+import { PageContainer } from "@/components/layout"
+import { Card, CategoryCard } from "@/components";
+import { content, categories } from "@/mocks"
 
 export function HomePage () {
   return (
     <PageContainer>
-      <div className="p-5 lg:px-28 lg:py-10">
-        <section className="grid gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {categories.map(({ slug }) => (
-            <Link 
-              key={slug} 
-              to={`/home/${slug}`}
-              className="rounded-md border bg-zinc-900 text-card-foreground shadow flex items-center justify-center lg:max-h-32 hover:scale-110 transition-all duration-300 ease-in-out">
-              <img 
-                className="w-full h-full object-cover"
-                src={`/categories/${slug}.png`}
-              />
-            </Link>))}
+      <div className="p-4 md:px-28 lg:px-44">
+        <header className="py-2">
+          <h2 className="font-bold text-xl">Categories</h2>
+        </header>
+        <section className="grid gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {categories.map((category) => (
+            <CategoryCard 
+              key={category.slug}
+              category={category}
+            />
+          ))}
+          <CategoryCard />
         </section>
       </div>
-      <main>
-        <header className="px-5 py-2">
-          <h2 className="font-bold">All Content</h2>
+      <main className="p-4 md:px-28 lg:px-44">
+        <header className="pb-6">
+          <h2 className="font-bold text-3xl">All Content</h2>
         </header>
-        <section className="p-5 pt-0">
-          {content.map(({id, title}) => (
-            <Link key={id} to={`/home/detail/${id}`}>
-              <h3>{title}</h3>
-            </Link>
+        <section className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+          {content.map(({ id, poster }) => (
+            <Card 
+              key={id} 
+              image={poster}
+              to={`/home/detail/${id}`} 
+            />
           ))}
         </section>
       </main>
