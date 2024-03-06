@@ -28,7 +28,7 @@ export function Home () {
             <Card 
               key={id} 
               image={poster}
-              to={`/home/detail/${id}`} 
+              to={`/detail/${id}`} 
             />
           ))}
         </section>
