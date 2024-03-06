@@ -1,14 +1,12 @@
+import { Button, InputField, GoogleButton } from "@/components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginSchema } from "@/validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, InputField } from "@/components";
 import { SpinnerIcon } from "@/components/icons";
-import { Toaster, toast } from 'sonner'
-import { loginWithEmailPassword, loginWithGoogle } from "@/services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { Toaster, toast } from "sonner"
 import { useEffect } from "react";
-import { GoogleButton } from "@/components/GoogleButton";
 
 interface Inputs {
   email: string
@@ -24,17 +22,23 @@ export function Login (): JSX.Element {
     resolver: zodResolver(loginSchema)
   })
 
-  const { isAuthorizedUser, loading } = useAuth()
+  const { 
+    isAuthorizedUser, 
+    loading, 
+    login, 
+    loginGoogle 
+  } = useAuth()
+
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    await loginWithEmailPassword(data)
+    await login(data)
       .then(() => navigate("/home"))
       .catch(() => toast.error("Email or password incorrect"))
   }
 
   const handleLoginWithGoogle = async () => {
-    await loginWithGoogle()
+    await loginGoogle()
       .then(() => navigate("/home"))
       .catch(() => toast.error("Error with login Google"))
   }
@@ -74,7 +78,7 @@ export function Login (): JSX.Element {
               {isSubmitting ? <SpinnerIcon /> : "Login"}
             </Button>
           </div>
-          <div className="w-full flex flex-col">
+          <div className="w-full hidden md:flex md:flex-col ">
             <div className="relative my-5">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t"></span>
