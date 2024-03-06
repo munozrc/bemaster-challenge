@@ -2,6 +2,11 @@
 
 ![alt text](https://github.com/munozrc/bemaster-challenge/blob/main/docs/screenshot.png?raw=true)
 
+**Deploy @Vercel and AWS s3**
+
+- [https://bemaster-challenge.vercel.app/](https://bemaster-challenge.vercel.app/)
+- [http://bemaster-challenge-munozrc.s3-website.us-east-2.amazonaws.com/home](http://bemaster-challenge-munozrc.s3-website.us-east-2.amazonaws.com/home)
+
 ## Table of Contents
 
 - [About](#about)
