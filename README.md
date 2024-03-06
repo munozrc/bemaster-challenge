@@ -1,6 +1,6 @@
 # BeMaster Challenge React + TS
 
-![alt text](https://github.com/munozrc/bemaster-challenge/blob/main/home-screenshot.png?raw=true)
+![alt text](https://github.com/munozrc/bemaster-challenge/blob/main/docs/home-screenshot.png?raw=true)
 
 ## Table of Contents
 
