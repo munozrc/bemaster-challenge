@@ -30,7 +30,7 @@ export function Login (): JSX.Element {
       </div>
       <div className="flex w-full h-full p-10">
         <form 
-          className="mx-auto flex w-full flex-col justify-center sm:w-[350px] gap-1"
+          className="mx-auto flex w-full flex-col justify-center sm:w-[350px] gap-1 animate-fade"
           onSubmit={handleSubmit(onSubmit)}
         >
           <header className="w-full flex flex-col justify-center pb-6">

@@ -12,7 +12,7 @@ export const CategoryCard: FC<Props> = ({ category }) => {
   return (
     <Link
       to={categoryPath}
-      className={`rounded-md border ${categoryStyle} shadow-xl flex items-center justify-center lg:max-h-32 hover:scale-110 transition-all duration-200 shadow-slate-300`}
+      className={`rounded-md border ${categoryStyle} shadow-xl flex items-center justify-center lg:max-h-32 hover:scale-110 transition-all duration-200 shadow-slate-300 animate-fade`}
     >
       {category ? ( 
         <img 
