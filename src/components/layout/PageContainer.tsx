@@ -7,9 +7,9 @@ interface Props {
 
 export function PageContainer ({children}: Props): JSX.Element {
   return (
-    <div>
+    <>
       <Header />
-      <main>{children}</main>
-    </div>
+      {children}
+    </>
   )
 }
