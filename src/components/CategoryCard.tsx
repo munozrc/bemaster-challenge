@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const CategoryCard: FC<Props> = ({ category }) => {
-  const categoryPath = category ? `/home/${category.slug}` : "/home"
+  const categoryPath = category ? `/category/${category.slug}` : "/home"
   const categoryStyle = category ? "bg-zinc-900 shadow" :"border-zinc-500 bg-zinc-200 "
   return (
     <Link
