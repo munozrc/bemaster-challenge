@@ -1,5 +1,5 @@
+import { Navigate, useParams } from "react-router-dom"
 import { PageContainer } from "@/components/layout"
-import { useParams } from "react-router-dom"
 import { content } from "@/mocks"
 
 export function ContentDetails () {
@@ -7,11 +7,7 @@ export function ContentDetails () {
   const currentContent = content.find((item) => item.id === id)
 
   if (typeof currentContent === "undefined") {
-    return (
-      <PageContainer>
-        <h4>Content Details not Found</h4>
-      </PageContainer>
-    )
+    return (<Navigate to="*" replace />)
   }
 
   return (

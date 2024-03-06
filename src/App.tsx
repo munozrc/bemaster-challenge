@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { ContentCategory, ContentDetails, Home, Login, NotFound } from "@/pages"
 import { ProtectedRoute } from "@/components"
-import { ContentCategory, ContentDetails, Home, Login } from "@/pages"
 
 function App () {
   return (
@@ -12,7 +12,9 @@ function App () {
           <Route path="/home" element={<Home />} />
           <Route path="/category/:slug" element={<ContentCategory />} />
           <Route path="/details/:id" element={<ContentDetails />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   )

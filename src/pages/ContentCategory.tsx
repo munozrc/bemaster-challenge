@@ -1,6 +1,6 @@
+import { Navigate, useParams } from "react-router-dom";
 import { PageContainer } from "@/components/layout"
 import { content, categories } from "@/mocks"
-import { useParams } from "react-router-dom";
 import { Card } from "@/components";
 
 export function ContentCategory () {
@@ -8,11 +8,7 @@ export function ContentCategory () {
   const currentCategory = categories.find((category) => category.slug === slug)
 
   if (typeof currentCategory === "undefined") {
-    return (
-      <PageContainer>
-        <h4>Category Not Found</h4>
-      </PageContainer>
-    )
+    return (<Navigate to="*" replace />)
   }
 
   const listOfContent = content.filter(({category}) => category === currentCategory.slug)
