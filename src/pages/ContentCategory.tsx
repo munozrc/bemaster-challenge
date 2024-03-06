@@ -1,8 +1,8 @@
-import { Link, Navigate, useParams } from "react-router-dom";
-import { useSingleCategory } from "@/hooks/useSingleCategory";
+import { Link, Navigate, useParams } from "react-router-dom"
+import { useSingleCategory } from "@/hooks/useSingleCategory"
 import { PageContainer } from "@/components/layout"
-import { BackIcon } from "@/components/icons";
-import { Card } from "@/components";
+import { BackIcon } from "@/components/icons"
+import { Card } from "@/components"
 
 export function ContentCategory () {
   const { slug } = useParams()

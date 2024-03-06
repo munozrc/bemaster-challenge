@@ -1,7 +1,7 @@
-import { Card, CardSkeleton, CategoryCard } from "@/components";
+import { Card, CardSkeleton, CategoryCard } from "@/components"
 import { PageContainer } from "@/components/layout"
-import { useContent } from "@/hooks/useContent";
-import { useAuth } from "@/hooks/useAuth";
+import { useContent } from "@/hooks/useContent"
+import { useAuth } from "@/hooks/useAuth"
 
 export function Home () {
   const { content, loading, categories } = useContent()
