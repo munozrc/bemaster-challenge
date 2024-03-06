@@ -1,7 +1,6 @@
 import type { FC, ButtonHTMLAttributes } from "react"
 
-interface Props extends ButtonHTMLAttributes
-<HTMLButtonElement> {}
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const Button: FC<Props> = ({ children, ...restOfProps }) => {
   return (
