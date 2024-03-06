@@ -4,4 +4,5 @@ export interface Content {
   releaseYear: string,
   category: string
   poster: string
+  overview: string
 }

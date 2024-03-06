@@ -38,7 +38,7 @@ export function ContentCategory () {
             <span className="text-sm text-slate-700">{listOfContent.length} result(s) found.</span>
           </div>
           <Link className="text-nowrap text-blue-500 hover:underline text-lg pr-2 flex items-center gap-2" to="/home">
-            <BackIcon />Go Back
+            <BackIcon />Go Home
           </Link>
         </header>
         <section className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
