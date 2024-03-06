@@ -5,12 +5,15 @@ import React from 'react'
 import App from '@/App'
 
 import '@/global.css'
+import { ContentProvider } from './context/ContentContext.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <ContentProvider>
+          <App />
+        </ContentProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

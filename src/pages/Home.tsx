@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react";
-import { PageContainer } from "@/components/layout"
 import { Card, CardSkeleton, CategoryCard } from "@/components";
-import { getListOfContent } from "@/services/content.service";
+import { PageContainer } from "@/components/layout"
+import { useContent } from "@/hooks/useContent";
 import { useAuth } from "@/hooks/useAuth";
-import { categories } from "@/mocks"
-import { Content } from "@/models";
 
 export function Home () {
-  const [listOfContent, setListOfContent] = useState<Array<Content> | undefined>()
+  const { content, loading, categories } = useContent()
   const { user } = useAuth()
-
-  useEffect(() => {
-    void getListOfContent()
-      .then(setListOfContent)
-  }, [])
 
   return (
     <PageContainer>
@@ -24,14 +16,13 @@ export function Home () {
             All ready? <strong className="text-sky-500">{user}</strong>
           </p>
         </header>
-        <section className="grid gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <section className="grid gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {categories.map((category) => (
             <CategoryCard 
               key={category.slug}
               category={category}
             />
           ))}
-          <CategoryCard />
         </section>
       </div>
       <main className="p-4 md:px-28 lg:px-44">
@@ -40,8 +31,8 @@ export function Home () {
           <p className="text-sm text-slate-700">Top picks for you. Updated daily.</p>
         </header>
         <section className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-          {!listOfContent && [0,1,2,3,4,5].map((index) => <CardSkeleton key={index}/>)}
-          {listOfContent && listOfContent.map(({ id, poster }) => (
+          {loading && [0,1,2,3,4,5].map((index) => <CardSkeleton key={index}/>)}
+          {!loading && content.map(({ id, poster }) => (
             <Card 
               key={poster} 
               image={poster}

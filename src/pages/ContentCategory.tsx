@@ -1,18 +1,16 @@
 import { Link, Navigate, useParams } from "react-router-dom";
+import { useSingleCategory } from "@/hooks/useSingleCategory";
 import { PageContainer } from "@/components/layout"
-import { content, categories } from "@/mocks"
-import { Card } from "@/components";
 import { BackIcon } from "@/components/icons";
+import { Card } from "@/components";
 
 export function ContentCategory () {
   const { slug } = useParams()
-  const currentCategory = categories.find((category) => category.slug === slug)
+  const { content, currentCategory } = useSingleCategory(slug)
 
   if (typeof currentCategory === "undefined") {
     return (<Navigate to="*" replace />)
   }
-
-  const listOfContent = content.filter(({category}) => category === currentCategory.slug)
 
   return (
     <PageContainer>
@@ -35,14 +33,14 @@ export function ContentCategory () {
         <header className="w-full flex justify-between items-center mb-4">
           <div className="w-full flex flex-col">
             <h3 className="font-semibold text-2xl">Content</h3>
-            <span className="text-sm text-slate-700">{listOfContent.length} result(s) found.</span>
+            <span className="text-sm text-slate-700">{content.length} result(s) found.</span>
           </div>
           <Link className="text-nowrap text-blue-500 hover:underline text-lg pr-2 flex items-center gap-2" to="/home">
             <BackIcon />Go Home
           </Link>
         </header>
         <section className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-          {listOfContent.map(({ id, poster }) => (
+          {content.map(({ id, poster }) => (
             <Card
               key={id} 
               image={poster}

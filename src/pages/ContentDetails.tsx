@@ -1,12 +1,12 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom"
+import { useSingleContent } from "@/hooks/useSingleContent"
 import { PageContainer } from "@/components/layout"
-import { content } from "@/mocks"
 import { BackIcon } from "@/components/icons"
 
 export function ContentDetails () {
   const { id } = useParams()
+  const { currentContent } = useSingleContent(id)
   const navigate = useNavigate()
-  const currentContent = content.find((item) => item.id === id)
 
   if (typeof currentContent === "undefined") {
     return (<Navigate to="*" replace />)
