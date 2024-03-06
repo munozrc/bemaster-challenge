@@ -5,7 +5,17 @@ export default {
     "./src/**/*.tsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        fade: 'fadeOut 500ms ease-in-out',
+      },
+      keyframes: () => ({
+        fadeOut: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      }),
+    },
   },
   plugins: [],
 }
