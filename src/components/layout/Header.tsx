@@ -11,9 +11,9 @@ export function Header () {
             <img src={logoApp} className="max-h-9"/>
           </Link>
         </h1>
-        <button className="text-slate-300 px-3">
+        <Link to="/login" className="text-slate-300 px-3">
           <LogoutIcon />
-        </button>
+        </Link>
       </header>
     </div>
   )
