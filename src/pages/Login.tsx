@@ -3,7 +3,11 @@ import { loginSchema } from "@/validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, InputField } from "@/components";
 import { SpinnerIcon } from "@/components/icons";
-import { Toaster } from 'sonner'
+import { Toaster, toast } from 'sonner'
+import { loginWithEmailPassword } from "@/services/auth.service";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
 
 interface Inputs {
   email: string
@@ -19,9 +23,18 @@ export function Login (): JSX.Element {
     resolver: zodResolver(loginSchema)
   })
 
+  const { isAuthorizedUser } = useAuth()
+  const navigate = useNavigate()
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log({data})
+    await loginWithEmailPassword(data)
+      .then(() => navigate("/home"))
+      .catch(() => toast.error("Email or password incorrect"))
   }
+
+  useEffect(() => {
+    if (isAuthorizedUser) return navigate("/home")
+  }, [isAuthorizedUser, navigate])
 
   return (
     <div className="container relative w-full h-full flex-col items-center justify-center md:grid md:max-w-none lg:grid-cols-2 lg:px-0">

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { PageContainer } from "@/components/layout"
 import { Card, CardSkeleton, CategoryCard } from "@/components";
 import { getListOfContent } from "@/services/content.service";
+import { useAuth } from "@/hooks/useAuth";
 import { categories } from "@/mocks"
 import { Content } from "@/models";
 
 export function Home () {
   const [listOfContent, setListOfContent] = useState<Array<Content> | undefined>()
+  const { user } = useAuth()
 
   useEffect(() => {
     void getListOfContent()
@@ -19,7 +21,7 @@ export function Home () {
         <header className="py-2">
           <h2 className="font-semibold text-3xl">Welcome back!</h2>
           <p className="text-md text-slate-700">
-            All ready? <strong className="text-sky-500">munozrengifocarlos@gmail.com</strong>
+            All ready? <strong className="text-sky-500">{user}</strong>
           </p>
         </header>
         <section className="grid gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
