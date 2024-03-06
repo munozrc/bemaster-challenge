@@ -40,7 +40,6 @@ export function Login (): JSX.Element {
   const handleLoginWithGoogle = async () => {
     await loginGoogle()
       .then(() => navigate("/home"))
-      .catch(() => toast.error("Error with login Google"))
   }
 
   useEffect(() => {
