@@ -4,10 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, InputField } from "@/components";
 import { SpinnerIcon } from "@/components/icons";
 import { Toaster, toast } from 'sonner'
-import { loginWithEmailPassword } from "@/services/auth.service";
+import { loginWithEmailPassword, loginWithGoogle } from "@/services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
+import { GoogleButton } from "@/components/GoogleButton";
 
 interface Inputs {
   email: string
@@ -23,13 +24,19 @@ export function Login (): JSX.Element {
     resolver: zodResolver(loginSchema)
   })
 
-  const { isAuthorizedUser } = useAuth()
+  const { isAuthorizedUser, loading } = useAuth()
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await loginWithEmailPassword(data)
       .then(() => navigate("/home"))
       .catch(() => toast.error("Email or password incorrect"))
+  }
+
+  const handleLoginWithGoogle = async () => {
+    await loginWithGoogle()
+      .then(() => navigate("/home"))
+      .catch(() => toast.error("Error with login Google"))
   }
 
   useEffect(() => {
@@ -66,6 +73,21 @@ export function Login (): JSX.Element {
             <Button disabled={isSubmitting}>
               {isSubmitting ? <SpinnerIcon /> : "Login"}
             </Button>
+          </div>
+          <div className="w-full flex flex-col">
+            <div className="relative my-5">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t"></span>
+              </div>
+              <div className="relative flex justify-center text-ms uppercase">
+                <span className="bg-slate-50 px-2 text-gray-600">Or continue with</span>
+              </div>
+            </div>
+            <GoogleButton
+              type="button"
+              disabled={!loading} 
+              onClick={handleLoginWithGoogle}
+            />
           </div>
         </form>
         <Toaster position="top-right" richColors />
